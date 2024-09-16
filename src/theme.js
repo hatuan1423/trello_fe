@@ -1,23 +1,19 @@
-import { cyan, deepOrange, orange, teal } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
+const APP_BAR_HEIGHT = "58px"
+const BOARD_BAR_HEIGHT = "60px"
+const BOARD_CONTENT_HEIGHT = `calc(100vh - ${APP_BAR_HEIGHT} - ${BOARD_BAR_HEIGHT})`
+
 const theme = createTheme({
-    trelloCustom: {
-        appBarHeight: '58px',
-        boardBarHeight: '60px'
+    trello: {
+        appBarHeight: APP_BAR_HEIGHT,
+        boardBarHeight: BOARD_BAR_HEIGHT,
+        boardContentHeight: BOARD_CONTENT_HEIGHT
     },
     colorSchemes: {
         dark: {
-            palette: {
-                primary: teal,
-                secondary: deepOrange
-            }
         },
         light: {
-            palette: {
-                primary: cyan,
-                secondary: orange
-            }
         }
     },
     components: {
@@ -33,7 +29,7 @@ const theme = createTheme({
                         borderRadius: '5px'
                     }
                     ,
-                    '*::-webkit-scrollbar-hover': {
+                    '*::-webkit-scrollbar-thumb:hover': {
                         backgroundColor: '#900',
                         borderRadius: '5px'
                     }
@@ -64,6 +60,30 @@ const theme = createTheme({
                         borderWidth: '1px !important'
                     }
                 })
+            }
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    fontSize: "0.875rem"
+                }
+            }
+        }
+        ,
+        MuiTypography: {
+            styleOverrides: {
+                root: {
+                    '&.MuiTypography-body1': {
+                        fontSize: "0.875rem"
+                    }
+                }
+            }
+        },
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    overflow: "unset"
+                }
             }
         }
     }
