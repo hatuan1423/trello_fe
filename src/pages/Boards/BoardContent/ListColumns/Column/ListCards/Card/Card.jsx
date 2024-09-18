@@ -8,46 +8,7 @@ import CommentIcon from "@mui/icons-material/Comment";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import Typography from "@mui/material/Typography";
 
-const Card = ({ temporaryHideMedia }) => {
-  if (temporaryHideMedia) {
-    return (
-      <MuiCard
-        sx={{
-          cursor: "pointer",
-          boxShadow: "0 1px 1px rgba(0,0,0, 0.2)",
-        }}
-      >
-        <CardMedia
-          sx={{ height: 140 }}
-          image="./src/assets/avatar.jpg"
-          title="green iguana"
-        />
-        <CardContent
-          sx={{
-            p: 1.5,
-            "&:last-child": { p: 1.5 },
-          }}
-        >
-          <Typography>Thu Yen</Typography>
-        </CardContent>
-        <CardActions
-          sx={{
-            p: "0 4px 8px 4px",
-          }}
-        >
-          <Button size="small" startIcon={<GroupsIcon />}>
-            20
-          </Button>
-          <Button size="small" startIcon={<CommentIcon />}>
-            15
-          </Button>
-          <Button size="small" startIcon={<InsertLinkIcon />}>
-            10
-          </Button>
-        </CardActions>
-      </MuiCard>
-    );
-  }
+const Card = ({ card }) => {
   return (
     <MuiCard
       sx={{
@@ -55,13 +16,20 @@ const Card = ({ temporaryHideMedia }) => {
         boxShadow: "0 1px 1px rgba(0,0,0, 0.2)",
       }}
     >
+      {card?.cover && (
+        <CardMedia
+          sx={{ height: 140 }}
+          image={card.cover}
+          title="green iguana"
+        />
+      )}
       <CardContent
         sx={{
           p: 1.5,
           "&:last-child": { p: 1.5 },
         }}
       >
-        <Typography>Thu Yen</Typography>
+        <Typography>{card?.title}</Typography>
       </CardContent>
       <CardActions
         sx={{
@@ -69,13 +37,13 @@ const Card = ({ temporaryHideMedia }) => {
         }}
       >
         <Button size="small" startIcon={<GroupsIcon />}>
-          20
+          {card.memberIds.length}
         </Button>
         <Button size="small" startIcon={<CommentIcon />}>
-          15
+          {card.comments.length}
         </Button>
         <Button size="small" startIcon={<InsertLinkIcon />}>
-          10
+          {card.attachments.length}
         </Button>
       </CardActions>
     </MuiCard>
