@@ -8,8 +8,9 @@ import AvatarGroup from "@mui/material/AvatarGroup";
 import Tooltip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { capitalizeFirstLetter } from "~/utils/formatter";
 
-const BoardBar = () => {
+const BoardBar = ({ board }) => {
   return (
     <Box
       px={2}
@@ -46,7 +47,7 @@ const BoardBar = () => {
             },
           }}
           icon={<DashboardIcon />}
-          label="Duong Ha Tuan"
+          label={board.title}
           clickable
         />
         <Chip
@@ -64,7 +65,7 @@ const BoardBar = () => {
             },
           }}
           icon={<VpnLockIcon />}
-          label="Public/Private WorkSpace"
+          label={capitalizeFirstLetter(board.type)}
           clickable
         />
         <Chip
